@@ -1,0 +1,9 @@
+bde_env/
+flink-env/
+airflow-env/
+superset-env/
+datashop_data/
+__pycache__/
+*.pyc
+.DS_Store
+lab01/Lab_01.pdf
