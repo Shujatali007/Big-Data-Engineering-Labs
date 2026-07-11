@@ -7,3 +7,5 @@ __pycache__/
 *.pyc
 .DS_Store
 lab01/Lab_01.pdf
+lab02/Lab_02.pdf
+lab02/data/
