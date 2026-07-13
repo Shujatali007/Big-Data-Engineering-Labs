@@ -3,9 +3,15 @@ flink-env/
 airflow-env/
 superset-env/
 datashop_data/
+spark-events/
 __pycache__/
 *.pyc
 .DS_Store
 lab01/Lab_01.pdf
 lab02/Lab_02.pdf
 lab02/data/
+lab06/ecommerce_project/target/
+lab06/ecommerce_project/dbt_packages/
+lab06/ecommerce_project/logs/
+lab06/datashop.duckdb
+lab05/jars/*.jar

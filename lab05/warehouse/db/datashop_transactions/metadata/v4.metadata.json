@@ -1,0 +1,171 @@
+{
+  "format-version" : 2,
+  "table-uuid" : "fc315738-9a4a-426d-accf-28c9e2450446",
+  "location" : "/Users/shuja/Desktop/Big_Data_Engineering_Labs/lab05/warehouse/db/datashop_transactions",
+  "last-sequence-number" : 3,
+  "last-updated-ms" : 1783859142524,
+  "last-column-id" : 9,
+  "current-schema-id" : 0,
+  "schemas" : [ {
+    "type" : "struct",
+    "schema-id" : 0,
+    "fields" : [ {
+      "id" : 1,
+      "name" : "transaction_id",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "customer_id",
+      "required" : false,
+      "type" : "int"
+    }, {
+      "id" : 3,
+      "name" : "product_id",
+      "required" : false,
+      "type" : "int"
+    }, {
+      "id" : 4,
+      "name" : "category",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "amount",
+      "required" : false,
+      "type" : "double"
+    }, {
+      "id" : 6,
+      "name" : "currency",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 7,
+      "name" : "country_code",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "status",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "txn_timestamp",
+      "required" : false,
+      "type" : "timestamptz"
+    } ]
+  } ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ {
+      "name" : "txn_timestamp_month",
+      "transform" : "month",
+      "source-id" : 9,
+      "field-id" : 1000
+    } ]
+  } ],
+  "last-partition-id" : 1000,
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "shuja",
+    "write.parquet.compression-codec" : "zstd"
+  },
+  "current-snapshot-id" : 340205480657947396,
+  "refs" : {
+    "main" : {
+      "snapshot-id" : 340205480657947396,
+      "type" : "branch"
+    }
+  },
+  "snapshots" : [ {
+    "sequence-number" : 1,
+    "snapshot-id" : 7652596455962619926,
+    "timestamp-ms" : 1783859141383,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1783859137002",
+      "added-data-files" : "4",
+      "added-records" : "8928",
+      "added-files-size" : "113196",
+      "changed-partition-count" : "4",
+      "total-records" : "8928",
+      "total-files-size" : "113196",
+      "total-data-files" : "4",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "/Users/shuja/Desktop/Big_Data_Engineering_Labs/lab05/warehouse/db/datashop_transactions/metadata/snap-7652596455962619926-1-d461c47f-662e-4339-ae41-da1f7ef60876.avro",
+    "schema-id" : 0
+  }, {
+    "sequence-number" : 2,
+    "snapshot-id" : 2280574669256146387,
+    "parent-snapshot-id" : 7652596455962619926,
+    "timestamp-ms" : 1783859142301,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1783859137002",
+      "added-data-files" : "4",
+      "added-records" : "8208",
+      "added-files-size" : "105384",
+      "changed-partition-count" : "4",
+      "total-records" : "17136",
+      "total-files-size" : "218580",
+      "total-data-files" : "8",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "/Users/shuja/Desktop/Big_Data_Engineering_Labs/lab05/warehouse/db/datashop_transactions/metadata/snap-2280574669256146387-1-8455a082-0859-4eb1-9fbc-40ca4c0f9eb7.avro",
+    "schema-id" : 0
+  }, {
+    "sequence-number" : 3,
+    "snapshot-id" : 340205480657947396,
+    "parent-snapshot-id" : 2280574669256146387,
+    "timestamp-ms" : 1783859142524,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1783859137002",
+      "added-data-files" : "4",
+      "added-records" : "8928",
+      "added-files-size" : "113750",
+      "changed-partition-count" : "4",
+      "total-records" : "26064",
+      "total-files-size" : "332330",
+      "total-data-files" : "12",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "/Users/shuja/Desktop/Big_Data_Engineering_Labs/lab05/warehouse/db/datashop_transactions/metadata/snap-340205480657947396-1-8de80f7f-b232-4f2f-a6ab-041fd1a0ce98.avro",
+    "schema-id" : 0
+  } ],
+  "statistics" : [ ],
+  "partition-statistics" : [ ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1783859141383,
+    "snapshot-id" : 7652596455962619926
+  }, {
+    "timestamp-ms" : 1783859142301,
+    "snapshot-id" : 2280574669256146387
+  }, {
+    "timestamp-ms" : 1783859142524,
+    "snapshot-id" : 340205480657947396
+  } ],
+  "metadata-log" : [ {
+    "timestamp-ms" : 1783859140368,
+    "metadata-file" : "/Users/shuja/Desktop/Big_Data_Engineering_Labs/lab05/warehouse/db/datashop_transactions/metadata/v1.metadata.json"
+  }, {
+    "timestamp-ms" : 1783859141383,
+    "metadata-file" : "/Users/shuja/Desktop/Big_Data_Engineering_Labs/lab05/warehouse/db/datashop_transactions/metadata/v2.metadata.json"
+  }, {
+    "timestamp-ms" : 1783859142301,
+    "metadata-file" : "/Users/shuja/Desktop/Big_Data_Engineering_Labs/lab05/warehouse/db/datashop_transactions/metadata/v3.metadata.json"
+  } ]
+}
