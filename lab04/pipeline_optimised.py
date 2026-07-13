@@ -3,7 +3,10 @@ from pyspark.sql.functions import col, to_date, broadcast, sum as spark_sum, cou
 import os
 import time
 
-data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datashop_data")
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+data_dir = os.path.join(project_root, "datashop_data")
+event_log_dir = os.path.join(project_root, "spark-events")
+os.makedirs(event_log_dir, exist_ok=True)
 
 spark = SparkSession.builder \
     .appName("DataShop_SalesPipeline_Optimised") \
@@ -11,6 +14,8 @@ spark = SparkSession.builder \
     .config("spark.sql.adaptive.enabled", "true") \
     .config("spark.sql.adaptive.skewJoin.enabled", "true") \
     .config("spark.sql.adaptive.coalescePartitions.enabled", "true") \
+    .config("spark.eventLog.enabled", "true") \
+    .config("spark.eventLog.dir", f"file://{event_log_dir}") \
     .getOrCreate()
 spark.sparkContext.setLogLevel("WARN")
 
@@ -67,4 +72,6 @@ daily_summary.write \
     .parquet(output_path)
 
 print("Partitioned write complete.")
+
+input("\nPress Enter to stop Spark and exit (UI available at http://localhost:4040)...")
 spark.stop()

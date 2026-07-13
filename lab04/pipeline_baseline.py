@@ -3,13 +3,18 @@ from pyspark.sql.functions import col, to_date, sum as spark_sum, count
 import os
 import time
 
-data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datashop_data")
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+data_dir = os.path.join(project_root, "datashop_data")
+event_log_dir = os.path.join(project_root, "spark-events")
+os.makedirs(event_log_dir, exist_ok=True)
 
 spark = SparkSession.builder \
     .appName("DataShop_SalesPipeline_Baseline") \
     .master("local[*]") \
     .config("spark.sql.adaptive.enabled", "false") \
     .config("spark.sql.autoBroadcastJoinThreshold", "-1") \
+    .config("spark.eventLog.enabled", "true") \
+    .config("spark.eventLog.dir", f"file://{event_log_dir}") \
     .getOrCreate()
 spark.sparkContext.setLogLevel("WARN")
 
@@ -50,4 +55,6 @@ row_count = daily_summary.count()
 elapsed = time.time() - start
 
 print(f"\nBaseline pipeline completed in {elapsed:.2f}s. Output rows: {row_count}")
+
+input("\nPress Enter to stop Spark and exit (UI available at http://localhost:4040)...")
 spark.stop()
