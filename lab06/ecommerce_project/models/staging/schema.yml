@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: "Cleaned completed transactions from DataShop (status = 'completed', amount > 0)"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for each transaction"
+        data_tests:
+          - unique
+          - not_null
+      - name: currency
+        description: "ISO 4217 currency code, normalised to uppercase"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['USD', 'EUR', 'GBP', 'JPY', 'SGD']
+      - name: country_code
+        description: "ISO 3166-1 alpha-2 country code, normalised to uppercase"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['US', 'GB', 'DE', 'FR', 'SG']
+
+  - name: stg_customers
+    description: "Cleaned active customers from DataShop (is_deleted = false)"
+    columns:
+      - name: customer_id
+        description: "Primary key for customers"
+        data_tests:
+          - unique
+          - not_null
+      - name: email
+        description: "Customer email address, normalised to lowercase"
+        data_tests:
+          - unique
+          - not_null

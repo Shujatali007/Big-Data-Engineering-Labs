@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: main # DuckDB's default schema is 'main'
+    description: "Raw DataShop tables loaded from Parquet files via load_to_duckdb.py"
+    tables:
+      - name: raw_transactions
+        description: "100,000 DataShop payment transactions (all statuses)"
+      - name: raw_customers
+        description: "5,000 DataShop customer records (including soft-deleted)"
